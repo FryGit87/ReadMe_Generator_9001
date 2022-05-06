@@ -2,7 +2,13 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 
-const createReadMe = ({ projectName, description, installation, usage }) =>
+const createReadMe = ({
+  projectName,
+  description,
+  installation,
+  usage,
+  license,
+}) =>
   `**${projectName}
 3
 ${description}
@@ -10,7 +16,7 @@ ${description}
 ${installation}
 2
 ${usage}
-
+${license}
 `;
 
 // TODO: Create an array of questions for user input
@@ -34,16 +40,22 @@ const questions = [
     type: "input",
     name: "usage",
     message: "?",
-    //   },
-    //   {
-    //     type: "input",
-    //     name: "contributors",
-    //     message: "?",
-    //   },
-    //   {
-    //     type: "input",
-    //     name: "tests",
-    //     message: "?",
+  },
+  //   },
+  //   {
+  //     type: "input",
+  //     name: "contributors",
+  //     message: "?",
+  //   },
+  //   {
+  //     type: "input",
+  //     name: "tests",
+  //     message: "?",
+  {
+    type: "list",
+    name: "license",
+    message: "Select the license used...",
+    choices: ["GNU GPLv3", "MIT License", "Apache v2.0"],
   },
 ];
 // inquirer.prompt(questions).then((data) => {}
