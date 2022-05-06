@@ -7,16 +7,17 @@ const createReadMe = ({
   description,
   installation,
   usage,
+  contributors,
+  tests,
   license,
 }) =>
-  `**${projectName}
-3
-${description}
-1
-${installation}
-2
-${usage}
-${license}
+  `**${projectName}\n
+  ![license badge](https://img.shields.io/static/v1?label=license&message=${license}&color=blue)\n
+${description}\n
+${installation}\n
+${contributors}\n
+${tests}\n
+${license}\n
 `;
 
 // TODO: Create an array of questions for user input
@@ -34,28 +35,29 @@ const questions = [
   {
     type: "input",
     name: "installation",
-    message: "?",
+    message: "Does application require a specific installation process?",
   },
   {
     type: "input",
     name: "usage",
-    message: "?",
+    message:
+      "Is the application currently in use or have examples of how to use?",
   },
-  //   },
-  //   {
-  //     type: "input",
-  //     name: "contributors",
-  //     message: "?",
-  //   },
-  //   {
-  //     type: "input",
-  //     name: "tests",
-  //     message: "?",
+  {
+    type: "input",
+    name: "contributors",
+    message: "Is it possible for others to contribute, if yes, how so?",
+  },
+  {
+    type: "input",
+    name: "tests",
+    message: "Is there any tests available for the application?",
+  },
   {
     type: "list",
     name: "license",
     message: "Select the license used...",
-    choices: ["GNU GPLv3", "MIT License", "Apache v2.0"],
+    choices: ["GNU_GPLv3", "MIT_License", "Apache_v2"],
   },
 ];
 // inquirer.prompt(questions).then((data) => {}
