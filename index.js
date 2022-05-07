@@ -128,6 +128,12 @@ const questions = [
     type: "input",
     name: "githubRepo",
     message: "Enter your GitHub repository name.",
+    validate: function (answer) {
+      if (answer.length < 1) {
+        return console.log("Must enter a Github repository name");
+      }
+      return true;
+    },
   },
   {
     type: "input",
