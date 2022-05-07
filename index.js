@@ -10,11 +10,12 @@ const createReadMe = ({
   contributors,
   tests,
   license,
+  licenseColour,
   githubUser,
   githubRepo,
   email,
 }) => `
-   ![license badge](https://img.shields.io/static/v1?label=license&message=${license}&color=blue)\n
+   ![license badge](https://img.shields.io/static/v1?label=license&message=${license}&color=${licenseColour})\n
 ---
 # ${projectName}\n
  
@@ -39,15 +40,15 @@ const createReadMe = ({
 
 ---
 ## Installation
-
+To install follow the following instructions:\n
 ${installation}\n
 ---
 ## Usage
 
 ${usage}\n
 ---
-## Contributing
-
+## Contributors
+The following users contributed to this project:\n
 ${contributors}\n
 ---
 ## Tests
@@ -55,8 +56,9 @@ ${contributors}\n
 ${tests}\n
 ---
 ## License
+This project is covered under the ${license} license.\n
+To read more about it, [click here](https://choosealicense.com/licenses/${license}).
 
-${license}\n
 ---
 ## Questions
 For any questions regarding the project, contact can be made through the following links.\n
@@ -91,27 +93,36 @@ const questions = [
   {
     type: "input",
     name: "contributors",
-    message: "Is it possible for others to contribute, if yes, how so?",
+    message: "Add the names of any known contributors to the project.",
   },
   {
     type: "input",
     name: "tests",
-    message: "Is there any tests available for the application?",
+    message:
+      "Is there any tests available for the application and how would a user run a test?",
   },
   {
     type: "list",
     name: "license",
     message: "Select the license used...",
-    choices: [
-      "GNU_GPLv3",
-      "MIT_License",
-      "Apache_v2, Microsoft_Public_License",
-    ],
+    choices: ["gpl-3.0", "mit", "apache-2.0"],
+  },
+  {
+    type: "list",
+    name: "licenseColour",
+    message: "What colour do you want the license badge to be?",
+    choices: ["Red", "Green", "Blue"],
   },
   {
     type: "input",
     name: "githubUser",
     message: "Enter your GitHub username.",
+    validate: function (answer) {
+      if (answer.length < 1) {
+        return console.log("Must enter a Username");
+      }
+      return true;
+    },
   },
   {
     type: "input",
@@ -129,7 +140,7 @@ const questions = [
   //   message: "Name of an image to represnt the project (.png)",
   // },
 ];
-// inquirer.prompt(questions).then((data) => {}
+
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
   const readMeInfo = createReadMe(data);
@@ -147,9 +158,4 @@ function init() {
 // Function call to initialize app
 init();
 
-// TOO TIRED FOR MORE
-// working prototype
-//add more homework criteria
-//try not to break
-//badges from shield.io for license apache v2 gnu v3 MIT
 //
