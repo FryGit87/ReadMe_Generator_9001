@@ -10,32 +10,59 @@ const createReadMe = ({
   contributors,
   tests,
   license,
-  logo,
+  githubUser,
+  githubRepo,
+  email,
 }) => `
    ![license badge](https://img.shields.io/static/v1?label=license&message=${license}&color=blue)\n
-
+---
 # ${projectName}\n
-***
-
  
 ## Description
----
+
   ${description}\n
+---
+## Table of Contents
+
+[Installation](https://github.com/${githubUser}/${githubRepo}#installation)
+
+[Usage](https://github.com/${githubUser}/${githubRepo}#usage)
+
+[Contributing](https://github.com/${githubUser}/${githubRepo}#contributors)
+
+[Tests](https://github.com/${githubUser}/${githubRepo}#tests)
+
+[License](https://github.com/${githubUser}/${githubRepo}#license)
+
+[Questions](https://github.com/${githubUser}/${githubRepo}#questions)
+
+
+---
 ## Installation
----
+
 ${installation}\n
+---
 ## Usage
----
+
 ${usage}\n
-## Contributors
 ---
+## Contributing
+
 ${contributors}\n
+---
 ## Tests
----
+
 ${tests}\n
-## License
 ---
+## License
+
 ${license}\n
+---
+## Questions
+For any questions regarding the project, contact can be made through the following links.\n
+Github: [${githubUser}](https://github.com/${githubUser})\n
+Email: [Email Me](${email})
+
 `;
 //   ![Project Logo](/images/${logo}.png)
 // TODO: Create an array of questions for user input
@@ -75,7 +102,26 @@ const questions = [
     type: "list",
     name: "license",
     message: "Select the license used...",
-    choices: ["GNU_GPLv3", "MIT_License", "Apache_v2"],
+    choices: [
+      "GNU_GPLv3",
+      "MIT_License",
+      "Apache_v2, Microsoft_Public_License",
+    ],
+  },
+  {
+    type: "input",
+    name: "githubUser",
+    message: "Enter your GitHub username.",
+  },
+  {
+    type: "input",
+    name: "githubRepo",
+    message: "Enter your GitHub repository name.",
+  },
+  {
+    type: "input",
+    name: "email",
+    message: "Enter your email.",
   },
   // {
   //   type: "input",
