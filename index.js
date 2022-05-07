@@ -10,16 +10,34 @@ const createReadMe = ({
   contributors,
   tests,
   license,
-}) =>
-  `**${projectName}\n
-  ![license badge](https://img.shields.io/static/v1?label=license&message=${license}&color=blue)\n
-${description}\n
+  logo,
+}) => `
+   ![license badge](https://img.shields.io/static/v1?label=license&message=${license}&color=blue)\n
+
+# ${projectName}\n
+***
+
+ 
+## Description
+---
+  ${description}\n
+## Installation
+---
 ${installation}\n
+## Usage
+---
+${usage}\n
+## Contributors
+---
 ${contributors}\n
+## Tests
+---
 ${tests}\n
+## License
+---
 ${license}\n
 `;
-
+//   ![Project Logo](/images/${logo}.png)
 // TODO: Create an array of questions for user input
 const questions = [
   {
@@ -59,6 +77,11 @@ const questions = [
     message: "Select the license used...",
     choices: ["GNU_GPLv3", "MIT_License", "Apache_v2"],
   },
+  // {
+  //   type: "input",
+  //   name: "logo",
+  //   message: "Name of an image to represnt the project (.png)",
+  // },
 ];
 // inquirer.prompt(questions).then((data) => {}
 // TODO: Create a function to write README file
